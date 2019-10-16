@@ -1,5 +1,5 @@
 {
-  "name": "looker-extension",
+  "name": "looker-extension-api",
   "version": "0.1.0",
   "description": "Looker Extension Client API",
   "main": "lib/index.js",
