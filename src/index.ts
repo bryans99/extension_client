@@ -22,5 +22,5 @@
  * THE SOFTWARE.
  */
 
-export * from './chatty'
+export * from './connect'
 export * from './sdk'

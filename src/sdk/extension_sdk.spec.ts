@@ -23,8 +23,8 @@
  */
 
 import { ChattyHostConnection } from '@looker/chatty'
-import { ExtensionHostApiImpl } from '../chatty/extension_host_api'
-import { ExtensionNotificationType } from '../chatty/types'
+import { ExtensionHostApiImpl } from '../connect/extension_host_api'
+import { ExtensionNotificationType } from '../connect/types'
 import { LookerExtensionSDK } from './extension_sdk'
 
 describe('extension_sdk tests', () => {

@@ -24,7 +24,7 @@
 
 import { DefaultSettings, LookerSDK } from '@looker/sdk'
 import { ExtensionSession, ExtensionTransport } from '.'
-import { ExtensionHostApi } from '../chatty'
+import { ExtensionHostApi } from '../connect'
 
 export class LookerExtensionSDK {
   /**

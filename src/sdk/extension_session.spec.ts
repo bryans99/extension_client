@@ -24,7 +24,7 @@
 
 import { DefaultSettings, IRequestInit } from '@looker/sdk'
 import { ExtensionSession, ExtensionTransport } from '.'
-import { ExtensionHostApi } from '../chatty'
+import { ExtensionHostApi } from '../connect'
 
 describe('extension_session tests', () => {
   let session: ExtensionSession

@@ -28,7 +28,7 @@ import {
   ITransportSettings,
   SDKResponse
 } from '@looker/sdk'
-import { ExtensionHostApi } from '../chatty'
+import { ExtensionHostApi } from '../connect'
 
 export class ExtensionTransport implements ITransport {
   constructor (
