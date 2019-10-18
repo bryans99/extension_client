@@ -34,19 +34,22 @@ import {
 } from './types'
 
 export class ExtensionHostApiImpl implements ExtensionHostApi {
-  private currentRoute: string | undefined
   private chattyHost: ChattyHostConnection
   private initializedCallback?: (payload?: InitializeNotification) => void
   private restoreRoute?: boolean
+  private setInitialRoute?: (router: string) => void
 
   constructor (configuration: ExtensionHostApiConfiguration) {
-    const { chattyHost, initializedCallback, restoreRoute } = configuration
+    const {
+      chattyHost,
+      initializedCallback,
+      restoreRoute,
+      setInitialRoute
+    } = configuration
     this.chattyHost = chattyHost
     this.initializedCallback = initializedCallback
     this.restoreRoute = restoreRoute
-    window.addEventListener('hashchange', () => {
-      this.fireRouteChange()
-    })
+    this.setInitialRoute = setInitialRoute
   }
 
   handleNotification (message: ExtensionNotification): any | void {
@@ -56,9 +59,8 @@ export class ExtensionHostApiImpl implements ExtensionHostApi {
         if (this.restoreRoute && payload) {
           const { route } = payload
           if (route) {
-            if (window.location.hash === '') {
-              window.location.hash = route
-              this.fireRouteChange()
+            if (this.setInitialRoute) {
+              this.setInitialRoute(route)
             }
           }
         }
@@ -114,10 +116,9 @@ export class ExtensionHostApiImpl implements ExtensionHostApi {
     this.send(ExtensionRequestType.UPDATE_LOCATION, { url, state })
   }
 
-  fireRouteChange () {
-    this.currentRoute = location.hash
+  clientRouteChanged (route: string) {
     this.send(ExtensionRequestType.ROUTE_CHANGED, {
-      route: this.currentRoute
+      route
     })
   }
 

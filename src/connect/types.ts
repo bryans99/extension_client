@@ -116,6 +116,7 @@ export interface ExtensionHostApi {
   ): Promise<any>
   updateTitle (title: string): void
   updateLocation (url: string, state?: any): void
+  clientRouteChanged (route: string): void
 }
 
 export interface ExtensionClientApi {
@@ -155,6 +156,7 @@ export interface ExtensionNotification {
 export interface ExtensionHostConfiguration {
   initializedCallback?: () => void
   restoreRoute?: boolean
+  setInitialRoute?: (route: string) => void
 }
 
 export interface ExtensionHostApiConfiguration

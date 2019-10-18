@@ -211,17 +211,17 @@ describe('extension_host_api tests', () => {
     })
   })
 
-  it('changes route', () => {
-    {
-      (global as any).location.hash = '#/sandbag'
-    }
-    const hostApi = createHostApi()
-    hostApi.fireRouteChange()
-    expect(sendSpy).toHaveBeenCalledWith('EXTENSION_API_REQUEST', {
-      payload: {
-        route: '#/sandbag'
-      },
-      type: 'ROUTE_CHANGED'
-    })
-  })
+  // it('changes route', () => {
+  //   {
+  //     (global as any).location.hash = '#/sandbag'
+  //   }
+  //   const hostApi = createHostApi()
+  //   hostApi.fireRouteChange()
+  //   expect(sendSpy).toHaveBeenCalledWith('EXTENSION_API_REQUEST', {
+  //     payload: {
+  //       route: '#/sandbag'
+  //     },
+  //     type: 'ROUTE_CHANGED'
+  //   })
+  // })
 })
