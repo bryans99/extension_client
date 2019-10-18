@@ -22,7 +22,8 @@
  * THE SOFTWARE.
  */
 
-import { DefaultSettings, LookerSDK } from '@looker/sdk'
+import { DefaultSettings } from '@looker/sdk/dist/rtl/apiSettings'
+import { LookerSDK } from '@looker/sdk/dist/sdk/methods'
 import { ExtensionSession, ExtensionTransport } from '.'
 import { ExtensionHostApi } from '../connect'
 

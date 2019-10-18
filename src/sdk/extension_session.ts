@@ -22,13 +22,12 @@
  * THE SOFTWARE.
  */
 
+import { IApiSettings } from '@looker/sdk/dist/rtl/apiSettings'
 import {
-  IAccessToken,
-  IApiSettings,
   IAuthorizer,
   IRequestInit,
   ITransport
-} from '@looker/sdk'
+} from '@looker/sdk/dist/rtl/transport'
 
 export class ExtensionSession implements IAuthorizer {
   sudoId: string = ''
@@ -50,19 +49,19 @@ export class ExtensionSession implements IAuthorizer {
     })
   }
 
-  async getToken (): Promise<IAccessToken> {
-    throw new Error('Access to token is not allowed from ExtensionSession')
-  }
+  // async getToken (): Promise<IAccessToken> {
+  //   throw new Error('Access to token is not allowed from ExtensionSession')
+  // }
 
   isSudo (): boolean {
     throw new Error('isSudo is not allowed from ExtensionSession')
   }
 
-  async login (sudoId?: string | number): Promise<IAccessToken> {
-    return new Promise<IAccessToken>((resolve, reject) =>
-      reject('Login not supported from ExtensionSession')
-    )
-  }
+  // async login (sudoId?: string | number): Promise<IAccessToken> {
+  //   return new Promise<IAccessToken>((resolve, reject) =>
+  //     reject('Login not supported from ExtensionSession')
+  //   )
+  // }
 
   async logout (): Promise<boolean> {
     return new Promise<boolean>((resolve, reject) =>

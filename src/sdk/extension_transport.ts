@@ -27,7 +27,7 @@ import {
   ITransport,
   ITransportSettings,
   SDKResponse
-} from '@looker/sdk'
+} from '@looker/sdk/dist/rtl/transport'
 import { ExtensionHostApi } from '../connect'
 
 export class ExtensionTransport implements ITransport {

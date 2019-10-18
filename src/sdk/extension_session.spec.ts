@@ -22,7 +22,8 @@
  * THE SOFTWARE.
  */
 
-import { DefaultSettings, IRequestInit } from '@looker/sdk'
+import { DefaultSettings } from '@looker/sdk/dist/rtl/apiSettings'
+import { IRequestInit } from '@looker/sdk/dist/rtl/transport'
 import { ExtensionSession, ExtensionTransport } from '.'
 import { ExtensionHostApi } from '../connect'
 
@@ -50,18 +51,6 @@ describe('extension_session tests', () => {
       })
   })
 
-  it('getToken not supported', (done) => {
-    session
-      .getToken()
-      .then(() => {
-        fail('getToken should fail')
-      })
-      .catch((error: any) => {
-        expect(error).toBeDefined()
-        done()
-      })
-  })
-
   it('isSudo not supported', () => {
     try {
       session.isSudo()
@@ -69,18 +58,6 @@ describe('extension_session tests', () => {
     } catch (error) {
       expect(error).toBeDefined()
     }
-  })
-
-  it('login not supported', (done) => {
-    session
-      .login()
-      .then(() => {
-        fail('login should fail')
-      })
-      .catch((error: any) => {
-        expect(error).toBeDefined()
-        done()
-      })
   })
 
   it('logout not supported', (done) => {
