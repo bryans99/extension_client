@@ -44,13 +44,39 @@ export class ExtensionTransport implements ITransport {
     method: HttpMethod,
     path: string,
     queryParams?: any,
-    body?: any
+    body?: any,
+    authenticator?: any,
+    options?: Partial<ITransportSettings>
   ): Promise<SDKResponse<TSuccess, TError>> {
+    let params: any
+    if (queryParams) {
+      params = {}
+      Object.keys(queryParams).forEach((key) => {
+        if (queryParams[key]) {
+          params[key] = queryParams[key]
+        }
+      })
+    }
+
     return this.hostConnection.invokeCoreSdkByPath(
       method,
       path,
+      params,
       body,
-      queryParams
+      undefined,
+      options
     )
+  }
+
+  async stream<TSuccess> (
+    callback: (readable: any) => Promise<TSuccess>,
+    method: HttpMethod,
+    path: string,
+    queryParams?: any,
+    body?: any,
+    authenticator?: any,
+    options?: Partial<ITransportSettings>
+  ): Promise<TSuccess> {
+    throw new Error('stream not supported')
   }
 }

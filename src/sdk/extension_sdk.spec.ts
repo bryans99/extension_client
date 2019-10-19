@@ -80,8 +80,9 @@ describe('extension_sdk tests', () => {
               body: null,
               httpMethod: 'GET',
               options: undefined,
-              params: { fields: '' },
-              path: '/connections'
+              params: {},
+              path: '/connections',
+              authenticator: undefined
             },
             type: 'INVOKE_CORE_SDK'
           }

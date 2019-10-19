@@ -112,6 +112,7 @@ export interface ExtensionHostApi {
     path: string,
     body?: any,
     params?: any,
+    authenticator?: any,
     options?: any
   ): Promise<any>
   updateTitle (title: string): void

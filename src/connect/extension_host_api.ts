@@ -95,15 +95,17 @@ export class ExtensionHostApiImpl implements ExtensionHostApi {
   async invokeCoreSdkByPath (
     httpMethod: string,
     path: string,
-    body?: any,
     params?: any,
+    body?: any,
+    authenticator?: any,
     options?: any
   ): Promise<any> {
     return this.sendAndReceive(ExtensionRequestType.INVOKE_CORE_SDK, {
       httpMethod,
       path,
-      body,
       params,
+      body,
+      authenticator,
       options
     })
   }

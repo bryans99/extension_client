@@ -157,8 +157,9 @@ describe('extension_host_api tests', () => {
         .invokeCoreSdkByPath(
           'POST',
           '/looker/all_connections',
-          { body: true },
           { params: true },
+          { body: true },
+          undefined,
           { options: true }
         )
         .then((message: any) => {
