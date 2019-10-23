@@ -116,7 +116,7 @@ export interface ExtensionHostApi {
     options?: any
   ): Promise<any>
   updateTitle (title: string): void
-  updateLocation (url: string, state?: any): void
+  updateLocation (url: string, state?: any, target?: string): void
   clientRouteChanged (route: string): void
 }
 

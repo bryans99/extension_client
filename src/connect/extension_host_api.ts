@@ -114,8 +114,8 @@ export class ExtensionHostApiImpl implements ExtensionHostApi {
     this.send(ExtensionRequestType.UPDATE_TITLE, { title })
   }
 
-  updateLocation (url: string, state?: any) {
-    this.send(ExtensionRequestType.UPDATE_LOCATION, { url, state })
+  updateLocation (url: string, state?: any, target?: string) {
+    this.send(ExtensionRequestType.UPDATE_LOCATION, { url, state, target })
   }
 
   clientRouteChanged (route: string) {

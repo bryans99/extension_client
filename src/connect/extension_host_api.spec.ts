@@ -202,11 +202,12 @@ describe('extension_host_api tests', () => {
 
   it('updates location', () => {
     const hostApi = createHostApi()
-    hostApi.updateLocation('/marketplace', { state: true })
+    hostApi.updateLocation('/marketplace', { state: true }, '_blank')
     expect(sendSpy).toHaveBeenCalledWith('EXTENSION_API_REQUEST', {
       payload: {
         url: '/marketplace',
-        state: { state: true }
+        state: { state: true },
+        target: '_blank'
       },
       type: 'UPDATE_LOCATION'
     })
