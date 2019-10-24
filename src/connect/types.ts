@@ -117,6 +117,7 @@ export interface ExtensionHostApi {
   ): Promise<any>
   updateTitle (title: string): void
   updateLocation (url: string, state?: any, target?: string): void
+  openBrowserWindow (url: string, target?: string): void
   clientRouteChanged (route: string): void
 }
 
@@ -147,13 +148,16 @@ export interface InitializeNotification {
 }
 
 /**
- * Extension
+ * Extension notification
  */
 export interface ExtensionNotification {
   type: ExtensionNotificationType
   payload?: InitializeNotification | undefined
 }
 
+/**
+ * Extension host configuration
+ */
 export interface ExtensionHostConfiguration {
   initializedCallback?: () => void
   restoreRoute?: boolean

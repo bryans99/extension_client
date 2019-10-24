@@ -118,6 +118,14 @@ export class ExtensionHostApiImpl implements ExtensionHostApi {
     this.send(ExtensionRequestType.UPDATE_LOCATION, { url, state, target })
   }
 
+  openBrowserWindow (url: string, target?: string) {
+    this.send(ExtensionRequestType.UPDATE_LOCATION, {
+      url,
+      undefined,
+      target: target || '_blank'
+    })
+  }
+
   clientRouteChanged (route: string) {
     this.send(ExtensionRequestType.ROUTE_CHANGED, {
       route

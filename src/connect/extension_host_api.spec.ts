@@ -213,17 +213,36 @@ describe('extension_host_api tests', () => {
     })
   })
 
-  // it('changes route', () => {
-  //   {
-  //     (global as any).location.hash = '#/sandbag'
-  //   }
-  //   const hostApi = createHostApi()
-  //   hostApi.fireRouteChange()
-  //   expect(sendSpy).toHaveBeenCalledWith('EXTENSION_API_REQUEST', {
-  //     payload: {
-  //       route: '#/sandbag'
-  //     },
-  //     type: 'ROUTE_CHANGED'
-  //   })
-  // })
+  it('opens window', () => {
+    const hostApi = createHostApi()
+    hostApi.openBrowserWindow('/marketplace')
+    expect(sendSpy).toHaveBeenCalledWith('EXTENSION_API_REQUEST', {
+      payload: {
+        url: '/marketplace',
+        state: undefined,
+        target: '_blank'
+      },
+      type: 'UPDATE_LOCATION'
+    })
+    hostApi.openBrowserWindow('/marketplace', 'target')
+    expect(sendSpy).toHaveBeenCalledWith('EXTENSION_API_REQUEST', {
+      payload: {
+        url: '/marketplace',
+        state: undefined,
+        target: 'target'
+      },
+      type: 'UPDATE_LOCATION'
+    })
+  })
+
+  it('notifies route change', () => {
+    const hostApi = createHostApi()
+    hostApi.clientRouteChanged('/sandbox')
+    expect(sendSpy).toHaveBeenCalledWith('EXTENSION_API_REQUEST', {
+      payload: {
+        route: '/sandbox'
+      },
+      type: 'ROUTE_CHANGED'
+    })
+  })
 })
